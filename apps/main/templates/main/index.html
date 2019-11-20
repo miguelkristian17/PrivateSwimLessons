@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}">
+    <link href="{% static 'main/css/bootstrap1.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Welcome!</title>
+    <link href="{% static 'main/lib/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'main/lib/img/apple-touch-icon.png' %}"rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="{% static 'main/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href = "{% static 'main/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href = "{% static 'main/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href = "{% static 'main/lib/ionicons/css/ionicons.min.css' %}"  rel="stylesheet">
+  <link href = "{% static 'main/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href = "{% static 'main/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+</head>
+<body>
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <h1><a href="#intro" class="scrollto">Swim School</a></h1>
+        <!-- Uncomment belqow if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Instructors</a></li>
+          <li><a href="#contact">Contact</a></li>
+          {% if user %}
+            <li><a href="/loginReg">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+            <div class="carousel-background"><img src= "{% static 'main/img/water.gif' %}" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Hire a Private Swim Instructor!</h2>
+                <p>Hire trained and experienced swim instructors who can teach a range of swimming skills from basic water safety skills to stroke development.  </p>
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src= "{% static 'main/img/water.gif' %}" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Sign up as a Private Swim instructor!</h2>
+                <p> Connect with people who are seeking private swim lessons</p>
+                <a href="#services" class="btn-get-started scrollto">Get Started</a>
+              </div>
+            </div>
+          </div>
+
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!--==========================
+      Featured Services Section
+    ============================-->
+    <section id="featured-services">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-bookmarks-outline"></i>
+            <h4 class="title"><a href="">Search for an instructor </a></h4>
+            <p class="description">Search through our list of instructors and choose the one that fits the job!</p>
+          </div>
+
+          <div class="col-lg-4 box box-bg">
+            <i class="ion-ios-stopwatch-outline"></i>
+            <h4 class="title"><a href="">Contact to hire instructor</a></h4>
+            <p class="description">You may request an instructor for a lesson and make contact to schedule a time and place!</p>
+          </div>
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-analytics-outline"></i>
+            <h4 class="title"><a href="">Schedule Lesson</a></h4>
+            <p class="description">Confirm your lesson time and place </p>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- #featured-services -->
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Find the perfect instructor</h3>
+          <p>You may search from an array of different instructors with different specialties. Find the perfect swim instructor to fit your needs! </p>
+        </header>
+
+        <div class="row about-cols">
+
+          <div class="col-md-4 wow fadeInUp">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-mission.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Good with Kids</a></h2>
+              <p>
+                These instructors work well with young children who have little to no experience with swimming. They understand the importance of basic water safety needs before learning how to swim. 
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-plan.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Stroke Development</h2>
+              <p>
+                These instructors are experienced competitive swimmers who understand stroke technique and body position. They can help you fix your stroke to swim more effectively, and faster!
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="about-col">
+              <div class="img">
+                <img src="img/about-vision.jpg" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Adult Lessons</a></h2>
+              <p>
+                It is never too late to learn how to swim! These instructors work well with adults who are learning to swim or seeking to fix their swimming technique!
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services">
+      <div class="container">
+
+        <header class="section-header wow fadeInUp">
+          <h3>Calling all Swimmers and Lifeguards!</h3>
+          <p>Whether you have experience with competitive swimming or being a lifeguard, you may register and become a private swimming instructor! You may schedule lessons on your own time and choose your own clients!</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Flexible Schedule</a></h4>
+            <p class="description">Connect and communicate with your clients to schedule a lesson that best works with you.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+            <h4 class="title"><a href="">Location</a></h4>
+            <p class="description">Whether you have a pool in your backyard or not, clients will choose the location that works best with both parties.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+            <h4 class="title"><a href="">Pay</a></h4>
+            <p class="description">You can set your own reasonable pay rate! Any changes may negotiated with clients.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+            <h4 class="title"><a href="">Featured</a></h4>
+            <p class="description">Rack up good reviews to become featured on our wall as instructor of the week!</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+            <h4 class="title"><a href="">Make a difference</a></h4>
+            <p class="description">By becoming an instructor, you can change lives by teaching water safety skills.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="icon"><i class="ion-ios-people-outline"></i></div>
+            <h4 class="title"><a href="">Reach out</a></h4>
+            <p class="description">Register and make yourself available to teach swim lessons!</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- #services -->
+
+    <!--==========================
+      Call To Action Section
+    ============================-->
+    <section id="call-to-action" class="wow fadeIn">
+      <div class="container text-center">
+        <h3>Get Started!</h3>
+        <p> Make an account and start connecting with people looking to hire a private swim instructor!</p>
+        <a class="cta-btn" href="/loginReg">Register</a>
+      </div>
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Skills Section
+    ============================-->
+    <!-- <section id="skills">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Our Skills</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+        </header>
+
+        <div class="skills-content">
+
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">HTML <i class="val">100%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">CSS <i class="val">90%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">JavaScript <i class="val">75%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Photoshop <i class="val">55%</i></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+
+    <!--==========================
+      Facts Section
+    ============================-->
+    <!-- <section id="facts"  class="wow fadeIn">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Facts</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </header>
+
+        <div class="row counters">
+
+  				<div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">274</span>
+            <p>Clients</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">421</span>
+            <p>Projects</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">1,364</span>
+            <p>Hours Of Support</p>
+  				</div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">18</span>
+            <p>Hard Workers</p>
+  				</div>
+
+  			</div>
+
+        <div class="facts-img">
+          <img src="img/facts-img.png" alt="" class="img-fluid">
+        </div>
+
+      </div> -->
+    <!-- </section>#facts -->
+    {% if user %}
+      <section id="testimonials" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Instructors</h3>
+        </header>
+        <div class="owl-carousel testimonials-carousel">
+        {% for user in user %}
+          <div class="testimonial-item">
+            <a href = "/{{user.id}}/about"><h3>{{ user.firstName }} {{ user.lastName }}</h3></a>
+            <h4>Private Swim Instructor</h4>
+            <h5 class="mt-3">Specialty</h5>
+                <p> {{user.specialty}} </p> 
+            <p>
+              <img src="img/quote-sign-left.png" class="quote-sign-left" alt="">
+              "{{ user.exp }} "
+              <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+        </div>
+      </section>
+      {% endif %}<!-- #testimonials -->
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact" class="section-bg wow fadeInUp">
+      <div class="container">
+
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          <p>Have any questions of comments? Please fill out the form!</p>
+        </div>
+
+        <div class="row contact-info">
+
+
+          <div class="col-md-4">
+
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:sschooloffish@gmail.com">sschooloffish@gmail.com</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form">
+          <div id="sendmessage">Your message has been sent. Thank you!</div>
+          <div id="errormessage"></div>
+          <form action="" method="post" role="form" class="contactForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              <div class="validation"></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+              <div class="validation"></div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+  
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+        -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'main/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'main/lib/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'main/lib/easing/easing.min.js'%}"></script>
+  <script src="{% static 'main/lib/superfish/hoverIntent.js'%}"></script>
+  <script src="{% static 'main/lib/superfish/superfish.min.js'%}"></script>
+  <script src="{% static 'main/lib/wow/wow.min.js'%}"> </script>
+  <script src="{% static 'main/lib/waypoints/waypoints.min.js'%}"> </script>
+  <script src="{% static 'main/lib/counterup/counterup.min.js'%}"> </script>
+  <script src="{% static 'main/lib/owlcarousel/owl.carousel.min.js'%}"> </script>
+  <script src="{% static 'main/lib/isotope/isotope.pkgd.min.js'%}"> </script>
+  <script src="{% static 'main/lib/lightbox/js/lightbox.min.js'%}"> </script>
+  <script src="{% static 'main/lib/touchSwipe/jquery.touchSwipe.min.js'%}"> </script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+
+</body>
+
+</html>
