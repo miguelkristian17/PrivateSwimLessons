@@ -47,6 +47,9 @@ class UserManager(models.Manager):
 class AppointmentManager(models.Manager):
     def appointmentValidator(self, postData):
         errors = {}
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(postData['email']):          
+            errors['email'] = ("Invalid email address!")
         if len(postData['name']) < 3:
             errors["name"] = "Name must be at least 3 characters!"
         if len(postData['message']) < 20:
@@ -58,12 +61,8 @@ class ReviewManager(models.Manager):
         errors = {}
         if len(postData['name']) < 3:
             errors["name"] = "Name must be at least 3 characters!"
-        if postData['recommend'] != "yes" or postData['recommend'] != "no":
-            errors["recommend"] = "Invalid input for: Would you Recommend?" 
         if len(postData['desc']) < 20:
             errors["desc"] = "Review must be at least 20 characters!"
-        if int(postData['rating']) < 0 and int(postData['rating']) > 5:
-            errors["rating"] = "Rating must be between 0 - 5!"
         return errors
 
 class User(models.Model):
@@ -73,7 +72,7 @@ class User(models.Model):
     password= models.CharField(max_length = 255)
     bio = models.TextField(blank=True, null=True)
     exp = models.TextField(blank=True, null=True)
-    timeExperience = models.IntegerField(blank=True, null=True)
+    timeExperience = models.TextField(blank=True, null=True)
     location = models.IntegerField(blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     numAppointment = models.IntegerField(default = 0)

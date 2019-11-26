@@ -33,7 +33,9 @@
 						
 						<div class="bio mb-3">Private Swim Instructor</a><!--//bio-->
 						<p> Hired  {{page.numAppointment}} time(s)</p>
-
+						{% if page.timeExperience %}
+                        <p> Experience:  {{page.timeExperience}} </p>
+                        {% endif %}
 						{% if page.specialty %}
 						<h5 class="mt-3">Specialty</h5><p> {{ page.specialty }}</p>
 							{% endif %}
@@ -73,9 +75,7 @@
 				</div>
 			</nav>
 		</header>
-    
     <div class="main-wrapper">
-
 		<section class="blog-list px-3 py-5 p-md-5">
 			<div class="container">
 				<h2 class="title mb-3">Appointments</h2>
@@ -91,8 +91,8 @@
 								<div class="meta mb-1"><span class="date">Pool Access: {{ appointment.poolAccess }}</div>
 								<div class="intro"> {{ appointment.message }}  </div> 
 								<div class="meta mb-1"><a href = "mailto: {{ appointment.email }}"> Email Me! </a> </div>
-								<div class="meta mb-1"><a href = "/{{ page.id }}/takeAppointment"> Take Appointment! </a> </div> 
 								<div class="meta mb-1"><a href = "/{{ appointment.id }}/appointments/delete"> Delete Request </a></div>
+								<a class="btn btn-primary" href = "/{{ page.id }}/takeAppointment"> Take Appointment! </a>
 								</div><!--//media-body-->
 							</div><!--//media-->
 						</div><!--//item-->

@@ -34,7 +34,9 @@
 				
 				<div class="bio mb-3">Private Swim Instructor</a><!--//bio-->
 				<p> Hired  {{page.numAppointment}}  time(s)</p>
-
+				{% if page.timeExperience %}
+				<p> Experience:  {{page.timeExperience}} </p>
+				{% endif %}
 				{% if page.specialty %}
 				<h5 class="mt-3">Specialty</h5><p> {{ page.specialty }}</p>
 					{% endif %}
@@ -74,6 +76,8 @@
 					<a class="btn btn-primary" href="/logout">Log Out</a>
 					</li>
 				</ul>
+                {% else %}
+                <a class="btn btn-primary" href="/{{ rando }}/about">View Random Profile</a>
 				{% endif %}
 		</div>
 	</nav>
@@ -91,11 +95,7 @@
 								<div class="meta mb-1"><span class="date">Published on {{ review.created_at }}</div>
 								<div class="meta mb-1"><span class="date">Recommend: {{ review.recommend }}</div>
 								<div class="meta mb-1"><span class="date">Best feature: {{ review.bestFeature }}</div>
-								<div class="meta mb-1"><span class="date">Likes: {{ review.likes }}</div>
 								<div class="intro"> {{ review.desc }} </div>
-								{% if not loggedUser %}
-								<div class="meta mb-1"><a href = "/{{ review.id }}/likeReview"> Like </a> </div> 
-								{% endif %}
 							</div><!--//media-body-->
 						</div><!--//media-->
 					</div><!--//item-->

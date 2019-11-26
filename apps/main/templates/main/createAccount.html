@@ -3,7 +3,6 @@
     <head>
         {% load static %}
         <title>Edit Page</title>
-        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,37 +11,26 @@
         <link rel="shortcut icon" href="favicon.ico"> 
         
         <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
-        
         <link id="theme-style" rel="stylesheet" href="{% static 'main/aboutAssets/css/theme-2.css' %}">
         </head> 
-
 <body>
-    
     <header class="header text-center">
             <h1 class="blog-name pt-lg-4 mb-0" style = "padding:5px;"><a href="/{{page.id}}/about">{{ page.firstName }} {{ page.lastName }}</a></h1>
-        <nav class="navbar navbar-expand-lg navbar-dark" >
-
+            <nav class="navbar navbar-expand-lg navbar-dark" >
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div id="navigation" class="collapse navbar-collapse flex-column" >
 				<div class="profile-section pt-3 pt-lg-0">
                     <img class="profile-image mb-3 rounded-circle mx-auto" src="{% static 'main/aboutAssets/images/download.png' %}" alt="image" >			
 					
                     <div class="bio mb-3">Private Swim Instructor</a>
                     <p> Hired  {{page.numAppointment}}  time(s)</p>
-                    {% if page.timeExperience %}
-                    <p> Experience:  {{page.timeExperience}} </p>
-                    {% endif %}
                     {% if page.specialty %}
                     <h5 class="mt-3">Specialty</h5><p> {{ page.specialty }}</p>
                         {% endif %}                </div>
-
-
                     <hr> 
 				</div>
-				
 				<ul class="navbar-nav flex-column text-left">
 						<li class="nav-item active">
 							<a class="nav-link" href="/{{page.id}}/about"><i class="fas fa-user fa-fw mr-2"></i>About Me</a>
@@ -94,7 +82,6 @@
                     </div>
                 </form>
                 {% endif %}
-            
 			</div>
 		</nav>
     </header>
@@ -104,26 +91,25 @@
             {% if not page.bio%}
             <h2 class="title mb-3">Welcome, {{page.firstName}}!</h2>
             <h4 class="title mb-3">Please complete your Profile</h4class></h4>
+            <h4 class="title mb-5">Please input ALL fields</h4class></h4>
             {% else%}
-            <h2 class="title mb-3">Edit Page</h2>
-            <h4 class="title mb-3">Please input ALL fields</h4class></h4>
+            <h2 class="title mb-3">About Me</h2>
             {% endif%}
             <div class="form-group">
                 <form action="/{{ loggedUser.id }}/processEdit" method="POST">
                 {% csrf_token %}
-                <h5 class="mt-4">Introduction</h5>
-                    <label class="sr-only" for="bio">Introduce Yourself...</label>
+                <h5 class="mt-5">Introduce Yourself</h5>
                     <textarea type="text"rows="8" cols="50" id="bio" name="bio" class="form-control mr-md-1" placeholder="{{ page.bio}}"></textarea>
-                <h5 class="mt-4">My Skills and Experiences</h5>
+                <h5 class="mt-5">My Skills and Experiences</h5>
                     <label class="sr-only" for="exp">Your skills and experience...</label>
                     <textarea type="text" rows="8" cols="50"id="exp" name="exp" class="form-control mr-md-1" placeholder="{{ page.exp}}"></textarea>
+                <h6 class="mt-5"> Time Experience  </h6> 
+                <input placeholder="{{page.timeExperience}}" name="timeExperience" type="text" > <br> 
                 <h6 class="mt-5">Specialty (Optional):</h5>
                 <label class="sr-only" for="specialty">Specialty: </label>
                 <input maxlength = "18" placeholder="{{page.specialty}}" name="specialty" type="text"> <br> 
-                <h6 class="mt-5"> Time Experience  </h6> 
-                <input placeholder="{{page.timeExperience}}" name="timeExperience" type="text" > <br> 
                 <h6 class="mt-5"> Starting Price </h6> 
-                    <input maxlength = "3" placeholder="${{page.price}}" name="price" type="number" inputmode="numeric"> <br> 
+                    $<input maxlength = "3" placeholder="{{page.price}}" name="price" type="number" inputmode="numeric"> <br> 
                 <h6 class="mt-5"> Location (Zip Code) </h6> 
                     <input maxlength = "5" placeholder="{{ page.location }}" name="location" type="number" inputmode="numeric"> 
                     <br> <br>
@@ -149,11 +135,9 @@
 	
 	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
             <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-
         </footer>
     
     </div><!--//main-wrapper-->
-
     <!-- Javascript -->          
     <script src="{% static 'main/aboutAssets/plugins/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'main/aboutAssets/plugins/popper.min.js' %}"></script> 

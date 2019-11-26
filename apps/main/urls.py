@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^processLogin$', views.processLogin),
     url(r'^(?P<userID>\d+)/about$', views.about),
     url(r'^(?P<userID>\d+)/makeAppointment$', views.schedule),
+    url(r'^(?P<userID>\d+)/createAccount$', views.createAccount),
     url(r'^(?P<userID>\d+)/review$', views.review),
     url(r'^(?P<userID>\d+)/processReview$', views.processReview),
     url(r'^(?P<userID>\d+)/edit$', views.edit),

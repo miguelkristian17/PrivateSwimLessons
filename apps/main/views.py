@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
-import bcrypt
+import bcrypt, random
 from .models import *
 
 def loginReg(request):
@@ -33,7 +33,7 @@ def processReg(request):
             user = User.objects.create(firstName = newFirstName, lastName = newLastName, email = newEmail, password = hashPW)
             request.session['loggedUserID'] = user.id 
             loggedUserID= user.id
-            return redirect(f'{loggedUserID}/edit')
+            return redirect(f'{loggedUserID}/createAccount')
 
 def processLogin(request):
     errors = User.objects.loginValidator(request.POST)    
@@ -51,6 +51,21 @@ def processLogin(request):
                 return redirect(f'{loggedUserID}/about')
         return redirect("/loginReg")
 
+def createAccount(request, userID):
+    if 'loggedUserID' in request.session:
+        if int(request.session['loggedUserID']) == int(userID):
+            loggedUserID = request.session['loggedUserID']
+            loggedUser = User.objects.get(id = loggedUserID)
+            page = User.objects.get(id = loggedUserID)
+            if page.bio == None and page.exp == None:
+                appointments = Appointment.objects.filter(instructor = page).count()
+                review = Review.objects.filter(instructor = page)
+                return render(request, 'main/createAccount.html', context = {"loggedUser" : loggedUser, "page" : page,  "reviewCount" :review.count(), "appointments" : appointments})
+            else:
+                return redirect(f'/{userID}/about')
+    else:
+        return redirect('/index')
+
 def about(request, userID):
     if 'loggedUserID' in request.session:
         if int(request.session['loggedUserID']) == int(userID):
@@ -63,12 +78,16 @@ def about(request, userID):
             return render(request, 'main/about.html', context = {"loggedUser" : loggedUser, "page" : page, "review" : reviews, "appointment" : appointments})
         else:
             page = User.objects.get(id = userID)
+            allPages = User.objects.all().count()
+            rando = random.randint(1,allPages)
             reviews = Review.objects.filter(instructor = page).count()  
-            return render(request, 'main/about.html', context = {"page" : page, "review" : reviews})
+            return render(request, 'main/about.html', context = {"page" : page, "review" : reviews, "rando" : rando})
     else:
+        allPages = User.objects.all().count()
+        rando = random.randint(1,allPages)
         page = User.objects.get(id = userID)
         reviews = Review.objects.filter(instructor = page).count()  
-        return render(request, 'main/about.html', context = {"page" : page, "review" : reviews})
+        return render(request, 'main/about.html', context = {"page" : page, "review" : reviews, "rando" : rando})
     return render(request, 'main/index.html')
 
 def review(request, userID):
@@ -81,13 +100,17 @@ def review(request, userID):
             review = Review.objects.filter(instructor = page)
             return render(request, 'main/review.html', context = {"loggedUser" : loggedUser, "page" : page, "review" : review, "reviewCount" :review.count(), "appointments" : appointments })
         else:
+            allPages = User.objects.all().count()
+            rando = random.randint(1,allPages)
             page = User.objects.get(id = userID)
             review = Review.objects.filter(instructor = page)
-            return render(request, 'main/review.html', context = {"page" : page, "review" : review, "reviewCount" :review.count()})
+            return render(request, 'main/review.html', context = {"page" : page, "review" : review, "reviewCount" :review.count(), "rando" : rando})
     else:
+        allPages = User.objects.all().count()
+        rando = random.randint(1,allPages)
         page = User.objects.get(id = userID)
         review = Review.objects.filter(instructor = page)
-        return render(request, 'main/review.html', context = {"page" : page, "review" : review, "reviewCount" :review.count()})
+        return render(request, 'main/review.html', context = {"page" : page, "review" : review, "reviewCount" :review.count(), "rando" : rando})
     return redirect(f'/{userID}/about')
 
 def schedule(request, userID):
@@ -96,7 +119,9 @@ def schedule(request, userID):
     else:
         page = User.objects.get(id = userID)
         review = Review.objects.filter(instructor = page)
-        return render(request, 'main/schedule.html', context = {"page" : page, "reviewCount" :review.count()})
+        allPages = User.objects.all().count()
+        rando = random.randint(1,allPages)
+        return render(request, 'main/schedule.html', context = {"page" : page, "reviewCount" :review.count(),"rando" : rando})
 
 def likeReview(request, userID):
     review = Review.objects.get(id = userID)
@@ -153,12 +178,14 @@ def processEdit(request, userID):
     newPrice = request.POST['price']
     newLocation = request.POST['location']
     newSpecialty = request.POST['specialty']
+    newtimeExp = request.POST['timeExperience']
     editProfile = User.objects.get(id = userID)
     editProfile.bio = newBio
     editProfile.price = newPrice
     editProfile.exp = newExp
     editProfile.location = newLocation
     editProfile.specialty = newSpecialty
+    editProfile.timeExperience = newtimeExp
     editProfile.save()
     profileID = editProfile.id
     return redirect(f'/{profileID}/about')
